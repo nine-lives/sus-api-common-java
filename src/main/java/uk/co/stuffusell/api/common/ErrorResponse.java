@@ -3,18 +3,17 @@ package uk.co.stuffusell.api.common;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 @JsonAutoDetect(getterVisibility = JsonAutoDetect.Visibility.NONE, fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class SuccessResponse {
-    private boolean success;
+public class ErrorResponse {
+    private String error;
 
-    private SuccessResponse() {
-
+    private ErrorResponse() {
     }
 
-    public SuccessResponse(boolean success) {
-        this.success = success;
+    public ErrorResponse(String error) {
+        this.error = error;
     }
 
-    public boolean isSuccess() {
-        return success;
+    public String getError() {
+        return error;
     }
 }
