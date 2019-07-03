@@ -1,6 +1,7 @@
 package uk.co.stuffusell.api.common;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonAutoDetect(getterVisibility = JsonAutoDetect.Visibility.NONE, fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class CustomerUpdateRequest {
@@ -14,14 +15,41 @@ public class CustomerUpdateRequest {
     private String county;
     private String postcode;
     private String country;
+    @JsonProperty("validateCurrentPassword")
+    private boolean validateCurrentPassword;
     private String currentPassword;
     private String newPassword;
     private String payeeName;
     private String bacsAccountNumber;
     private String bacsSortCode;
-    private String paymentType;
+    private PaymentType paymentType;
+    @JsonProperty("hasMarketPreference")
     private Boolean hasMarketPreference;
+    @JsonProperty("doNotDisturb")
     private Boolean doNotDisturb;
+
+    public CustomerUpdateRequest() {
+
+    }
+
+    public CustomerUpdateRequest(CustomerDto customer) {
+        forename = customer.getFirstName();
+        surname = customer.getLastName();
+        email = customer.getPrimaryEmail();
+        phone = customer.getPrimaryTelephone();
+        address1 = customer.getAddress1();
+        address2 = customer.getAddress1();
+        city = customer.getCity();
+        county = customer.getCounty();
+        postcode = customer.getPostcode();
+        country = customer.getCountryIso3();
+        payeeName = customer.getPayeeName();
+        bacsAccountNumber = customer.getBacsAccountNumber();
+        bacsSortCode = customer.getBacsSortCode();
+        paymentType = customer.getPaymentType();
+        hasMarketPreference = customer.isHasMarketPreference();
+        doNotDisturb = customer.isDoNotDisturb();
+    }
 
     public String getForename() {
         return forename;
@@ -37,6 +65,10 @@ public class CustomerUpdateRequest {
 
     public String getEmail() {
         return email;
+    }
+
+    public boolean getValidateCurrentPassword() {
+        return validateCurrentPassword;
     }
 
     public String getCurrentPassword() {
@@ -83,15 +115,15 @@ public class CustomerUpdateRequest {
         return bacsSortCode;
     }
 
-    public String getPaymentType() {
+    public PaymentType getPaymentType() {
         return paymentType;
     }
 
-    public boolean isHasMarketPreference() {
+    public Boolean isHasMarketPreference() {
         return hasMarketPreference;
     }
 
-    public boolean isDoNotDisturb() {
+    public Boolean isDoNotDisturb() {
         return doNotDisturb;
     }
 
@@ -145,6 +177,11 @@ public class CustomerUpdateRequest {
         return this;
     }
 
+    public CustomerUpdateRequest withValidateCurrentPassword(boolean validateCurrentPassword) {
+        this.validateCurrentPassword = validateCurrentPassword;
+        return this;
+    }
+
     public CustomerUpdateRequest withCurrentPassword(String currentPassword) {
         this.currentPassword = currentPassword;
         return this;
@@ -170,7 +207,7 @@ public class CustomerUpdateRequest {
         return this;
     }
 
-    public CustomerUpdateRequest withPaymentType(String paymentType) {
+    public CustomerUpdateRequest withPaymentType(PaymentType paymentType) {
         this.paymentType = paymentType;
         return this;
     }

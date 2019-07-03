@@ -1,5 +1,6 @@
 package uk.co.stuffusell.api.common;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 @JsonAutoDetect(getterVisibility = JsonAutoDetect.Visibility.NONE, fieldVisibility = JsonAutoDetect.Visibility.ANY)
@@ -16,6 +17,7 @@ public class RegistrationRequest {
     private String ebayUserId;
     private String campaign;
     private String vatNumber;
+    @JsonAlias("isBot")
     private boolean isBot;
 
     public String getName() {

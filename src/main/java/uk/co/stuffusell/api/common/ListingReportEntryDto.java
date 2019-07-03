@@ -2,6 +2,11 @@ package uk.co.stuffusell.api.common;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.joda.time.LocalDate;
+import uk.co.stuffusell.api.common.mapper.LocalDateIso8601DateDeserializer;
+import uk.co.stuffusell.api.common.mapper.LocalDateIso8601DateSerializer;
 
 import java.math.BigDecimal;
 
@@ -9,7 +14,9 @@ import java.math.BigDecimal;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ListingReportEntryDto {
 
-    private String date;
+    @JsonSerialize(using = LocalDateIso8601DateSerializer.class)
+    @JsonDeserialize(using = LocalDateIso8601DateDeserializer.class)
+    private LocalDate date;
     private String reference;
     private String referenceLink;
     private boolean hasReferenceLink;
@@ -17,11 +24,11 @@ public class ListingReportEntryDto {
     private BigDecimal price;
     private String type;
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public ListingReportEntryDto withDate(String date) {
+    public ListingReportEntryDto withDate(LocalDate date) {
         this.date = date;
         return this;
     }

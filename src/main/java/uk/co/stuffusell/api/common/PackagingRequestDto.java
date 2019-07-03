@@ -2,15 +2,24 @@ package uk.co.stuffusell.api.common;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.joda.time.LocalDate;
+import uk.co.stuffusell.api.common.mapper.LocalDateIso8601DateDeserializer;
+import uk.co.stuffusell.api.common.mapper.LocalDateIso8601DateSerializer;
 
 @JsonAutoDetect(getterVisibility = JsonAutoDetect.Visibility.NONE, fieldVisibility = JsonAutoDetect.Visibility.ANY)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PackagingRequestDto {
     private PackagingType type;
     private int requested;
-    private String requestedDate;
+    @JsonSerialize(using = LocalDateIso8601DateSerializer.class)
+    @JsonDeserialize(using = LocalDateIso8601DateDeserializer.class)
+    private LocalDate requestedDate;
     private int sent;
-    private String sentDate;
+    @JsonSerialize(using = LocalDateIso8601DateSerializer.class)
+    @JsonDeserialize(using = LocalDateIso8601DateDeserializer.class)
+    private LocalDate sentDate;
     private boolean cancelled;
 
     public PackagingType getType() {
@@ -31,11 +40,11 @@ public class PackagingRequestDto {
         return this;
     }
 
-    public String getRequestedDate() {
+    public LocalDate getRequestedDate() {
         return requestedDate;
     }
 
-    public PackagingRequestDto withRequestedDate(String requestedDate) {
+    public PackagingRequestDto withRequestedDate(LocalDate requestedDate) {
         this.requestedDate = requestedDate;
         return this;
     }
@@ -49,11 +58,11 @@ public class PackagingRequestDto {
         return this;
     }
 
-    public String getSentDate() {
+    public LocalDate getSentDate() {
         return sentDate;
     }
 
-    public PackagingRequestDto withSentDate(String sentDate) {
+    public PackagingRequestDto withSentDate(LocalDate sentDate) {
         this.sentDate = sentDate;
         return this;
     }

@@ -2,6 +2,11 @@ package uk.co.stuffusell.api.common;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.joda.time.LocalDate;
+import uk.co.stuffusell.api.common.mapper.LocalDateIso8601DateDeserializer;
+import uk.co.stuffusell.api.common.mapper.LocalDateIso8601DateSerializer;
 
 import java.math.BigDecimal;
 
@@ -9,6 +14,8 @@ import java.math.BigDecimal;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public final class CustomerDto {
     private String customerUuid;
+    private int customerId;
+    private String accountUsername;
     private String brand;
     private String firstName;
     private String lastName;
@@ -42,9 +49,13 @@ public final class CustomerDto {
     private BigDecimal minPartialPaymentAmount;
     private boolean canRequestPayment;
     private boolean canRequestBacsPayment;
-    private String requestBacsPaymentDate;
+    @JsonSerialize(using = LocalDateIso8601DateSerializer.class)
+    @JsonDeserialize(using = LocalDateIso8601DateDeserializer.class)
+    private LocalDate requestBacsPaymentDate;
     private boolean canChangeBacsDetails;
-    private String changeBacsDetailsDate;
+    @JsonSerialize(using = LocalDateIso8601DateSerializer.class)
+    @JsonDeserialize(using = LocalDateIso8601DateDeserializer.class)
+    private LocalDate changeBacsDetailsDate;
     private boolean hasMarketPreference;
     private boolean doNotDisturb;
 
@@ -54,6 +65,24 @@ public final class CustomerDto {
 
     public CustomerDto withCustomerUuid(String customerUuid) {
         this.customerUuid = customerUuid;
+        return this;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public CustomerDto withCustomerId(Integer customerId) {
+        this.customerId = customerId;
+        return this;
+    }
+
+    public String getAccountUsername() {
+        return accountUsername;
+    }
+
+    public CustomerDto withAccountUsername(String accountUsername) {
+        this.accountUsername = accountUsername;
         return this;
     }
 
@@ -327,11 +356,11 @@ public final class CustomerDto {
         return this;
     }
 
-    public String getRequestBacsPaymentDate() {
+    public LocalDate getRequestBacsPaymentDate() {
         return requestBacsPaymentDate;
     }
 
-    public CustomerDto withRequestBacsPaymentDate(String requestBacsPaymentDate) {
+    public CustomerDto withRequestBacsPaymentDate(LocalDate requestBacsPaymentDate) {
         this.requestBacsPaymentDate = requestBacsPaymentDate;
         return this;
     }
@@ -345,11 +374,11 @@ public final class CustomerDto {
         return this;
     }
 
-    public String getChangeBacsDetailsDate() {
+    public LocalDate getChangeBacsDetailsDate() {
         return changeBacsDetailsDate;
     }
 
-    public CustomerDto withChangeBacsDetailsDate(String changeBacsDetailsDate) {
+    public CustomerDto withChangeBacsDetailsDate(LocalDate changeBacsDetailsDate) {
         this.changeBacsDetailsDate = changeBacsDetailsDate;
         return this;
     }

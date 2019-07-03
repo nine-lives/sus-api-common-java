@@ -10,7 +10,7 @@ sourceCompatibility = 1.8
 
 group = 'com.9ls'
 archivesBaseName = "sus-api-common"
-version = '1.0.0'
+version = '1.0.4'
 
 jacoco {
     toolVersion = "0.8.2"
@@ -23,7 +23,7 @@ signing {
 
 checkstyle {
     configFile = new File(rootDir, "config/checkstyle/checkstyle.xml")
-    showViolations = false
+    showViolations = true
 }
 
 repositories {
@@ -37,6 +37,8 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+
+    checkstyle('com.puppycrawl.tools:checkstyle:8.1')
 }
 
 test {

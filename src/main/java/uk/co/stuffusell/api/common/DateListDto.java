@@ -10,6 +10,9 @@ import java.util.stream.Collectors;
 public class DateListDto {
     private List<String> dates;
 
+    private DateListDto() {
+    }
+
     public DateListDto(List<LocalDate> dates) {
         this.dates = dates.stream().map(LocalDate::toString).collect(Collectors.toList());
     }

@@ -20,7 +20,9 @@ public final class CustomerLedgerEntryDto {
     private LocalDate transactionDate;
     private String transactionType;
     private BigDecimal transactionAmount;
-    private String processedDate;
+    @JsonSerialize(using = LocalDateIso8601DateSerializer.class)
+    @JsonDeserialize(using = LocalDateIso8601DateDeserializer.class)
+    private LocalDate processedDate;
     @JsonSerialize(using = LocalDateIso8601DateSerializer.class)
     @JsonDeserialize(using = LocalDateIso8601DateDeserializer.class)
     private LocalDate clearedDate;
@@ -57,11 +59,11 @@ public final class CustomerLedgerEntryDto {
         return this;
     }
 
-    public String getProcessedDate() {
+    public LocalDate getProcessedDate() {
         return processedDate;
     }
 
-    public CustomerLedgerEntryDto withProcessedDate(String processedDate) {
+    public CustomerLedgerEntryDto withProcessedDate(LocalDate processedDate) {
         this.processedDate = processedDate;
         return this;
     }
