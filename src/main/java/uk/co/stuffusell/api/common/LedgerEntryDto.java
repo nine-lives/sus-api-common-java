@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonAutoDetect(getterVisibility = JsonAutoDetect.Visibility.NONE, fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public final class CustomerLedgerEntryDto {
+public final class LedgerEntryDto {
 
     @JsonSerialize(using = LocalDateIso8601DateSerializer.class)
     @JsonDeserialize(using = LocalDateIso8601DateDeserializer.class)
@@ -36,7 +36,7 @@ public final class CustomerLedgerEntryDto {
         return transactionDate;
     }
 
-    public CustomerLedgerEntryDto withTransactionDate(LocalDate transactionDate) {
+    public LedgerEntryDto withTransactionDate(LocalDate transactionDate) {
         this.transactionDate = transactionDate;
         return this;
     }
@@ -45,7 +45,7 @@ public final class CustomerLedgerEntryDto {
         return transactionType;
     }
 
-    public CustomerLedgerEntryDto withTransactionType(String transactionType) {
+    public LedgerEntryDto withTransactionType(String transactionType) {
         this.transactionType = transactionType;
         return this;
     }
@@ -54,7 +54,7 @@ public final class CustomerLedgerEntryDto {
         return transactionAmount;
     }
 
-    public CustomerLedgerEntryDto withTransactionAmount(BigDecimal transactionAmount) {
+    public LedgerEntryDto withTransactionAmount(BigDecimal transactionAmount) {
         this.transactionAmount = transactionAmount;
         return this;
     }
@@ -63,7 +63,7 @@ public final class CustomerLedgerEntryDto {
         return processedDate;
     }
 
-    public CustomerLedgerEntryDto withProcessedDate(LocalDate processedDate) {
+    public LedgerEntryDto withProcessedDate(LocalDate processedDate) {
         this.processedDate = processedDate;
         return this;
     }
@@ -72,7 +72,7 @@ public final class CustomerLedgerEntryDto {
         return clearedDate;
     }
 
-    public CustomerLedgerEntryDto withClearedDate(LocalDate clearedDate) {
+    public LedgerEntryDto withClearedDate(LocalDate clearedDate) {
         this.clearedDate = clearedDate;
         return this;
     }
@@ -81,7 +81,7 @@ public final class CustomerLedgerEntryDto {
         return reference;
     }
 
-    public CustomerLedgerEntryDto withReference(String reference) {
+    public LedgerEntryDto withReference(String reference) {
         this.reference = reference;
         return this;
     }
@@ -90,7 +90,7 @@ public final class CustomerLedgerEntryDto {
         return ebayItemId;
     }
 
-    public CustomerLedgerEntryDto withEbayItemId(String ebayItemId) {
+    public LedgerEntryDto withEbayItemId(String ebayItemId) {
         this.ebayItemId = ebayItemId;
         return this;
     }
@@ -99,7 +99,7 @@ public final class CustomerLedgerEntryDto {
         return ebayItemIdLink;
     }
 
-    public CustomerLedgerEntryDto withEbayItemIdLink(String ebayItemIdLink) {
+    public LedgerEntryDto withEbayItemIdLink(String ebayItemIdLink) {
         this.ebayItemIdLink = ebayItemIdLink;
         return this;
     }
@@ -108,7 +108,7 @@ public final class CustomerLedgerEntryDto {
         return hasEbayItemIdLink;
     }
 
-    public CustomerLedgerEntryDto withHasEbayItemIdLink(boolean hasEbayItemIdLink) {
+    public LedgerEntryDto withHasEbayItemIdLink(boolean hasEbayItemIdLink) {
         this.hasEbayItemIdLink = hasEbayItemIdLink;
         return this;
     }
@@ -117,7 +117,7 @@ public final class CustomerLedgerEntryDto {
         return description;
     }
 
-    public CustomerLedgerEntryDto withDescription(String description) {
+    public LedgerEntryDto withDescription(String description) {
         this.description = description;
         return this;
     }

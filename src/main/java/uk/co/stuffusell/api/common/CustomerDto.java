@@ -42,9 +42,8 @@ public final class CustomerDto {
     private String country;
     private String countryIso3;
 
-    private BigDecimal balance;
-    private BigDecimal availableBalance;
-    private BigDecimal paymentsTotal;
+    private BalancesDto balances;
+
     private boolean paymentRequested;
     private BigDecimal minPartialPaymentAmount;
     private boolean canRequestPayment;
@@ -293,30 +292,12 @@ public final class CustomerDto {
         return this;
     }
 
-    public BigDecimal getBalance() {
-        return balance;
+    public BalancesDto getBalances() {
+        return balances;
     }
 
-    public CustomerDto withBalance(BigDecimal balance) {
-        this.balance = balance;
-        return this;
-    }
-
-    public BigDecimal getAvailableBalance() {
-        return availableBalance;
-    }
-
-    public CustomerDto withAvailableBalance(BigDecimal availableBalance) {
-        this.availableBalance = availableBalance;
-        return this;
-    }
-
-    public BigDecimal getPaymentsTotal() {
-        return paymentsTotal;
-    }
-
-    public CustomerDto withPaymentsTotal(BigDecimal paymentsTotal) {
-        this.paymentsTotal = paymentsTotal;
+    public CustomerDto withBalances(BalancesDto balances) {
+        this.balances = balances;
         return this;
     }
 
@@ -400,4 +381,29 @@ public final class CustomerDto {
         this.doNotDisturb = doNotDisturb;
         return this;
     }
+
+    /**
+     @deprecated getBalances().getBalance()
+     **/
+    @Deprecated
+    public BigDecimal getBalance() {
+        return balances == null ? null : balances.getBalance();
+    }
+
+    /**
+     @deprecated getBalances().getAvailableBalance()
+     **/
+    @Deprecated
+    public BigDecimal getAvailableBalance() {
+        return balances == null ? null : balances.getAvailableBalance();
+    }
+
+    /**
+     @deprecated getBalances().getPaymentsBalance()
+     **/
+    @Deprecated
+    public BigDecimal getPaymentsTotal() {
+        return balances == null ? null : balances.getPaymentsBalance();
+    }
+
 }
