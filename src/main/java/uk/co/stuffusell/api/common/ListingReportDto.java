@@ -3,6 +3,7 @@ package uk.co.stuffusell.api.common;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,12 @@ public final class ListingReportDto {
     private String title;
     private String listingStatus;
     private Integer stockCount;
+    private BigDecimal salePrice;
+    private List<LedgerEntryDto> ledger = new ArrayList<>();
     private List<ListingReportEntryDto> entries = new ArrayList<>();
+
+
+    private List<BuyerOrderDto> orders = new ArrayList<>();
 
     public String getSku() {
         return sku;
@@ -58,6 +64,33 @@ public final class ListingReportDto {
 
     public ListingReportDto withEntries(List<ListingReportEntryDto> entries) {
         this.entries = entries;
+        return this;
+    }
+
+    public List<LedgerEntryDto> getLedger() {
+        return ledger;
+    }
+
+    public ListingReportDto withLedger(List<LedgerEntryDto> ledger) {
+        this.ledger = ledger;
+        return this;
+    }
+
+    public BigDecimal getSalePrice() {
+        return salePrice;
+    }
+
+    public ListingReportDto withSalePrice(BigDecimal salePrice) {
+        this.salePrice = salePrice;
+        return this;
+    }
+
+    public List<BuyerOrderDto> getOrders() {
+        return orders;
+    }
+
+    public ListingReportDto withOrders(List<BuyerOrderDto> orders) {
+        this.orders = orders;
         return this;
     }
 }
