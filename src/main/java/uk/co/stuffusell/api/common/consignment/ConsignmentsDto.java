@@ -1,10 +1,6 @@
 package uk.co.stuffusell.api.common.consignment;
 
-import org.joda.time.LocalDate;
-import uk.co.stuffusell.api.common.PricingDto;
-
 import java.util.List;
-import java.util.Map;
 
 public class ConsignmentsDto {
     private List<ConsignmentDto> consignments;
