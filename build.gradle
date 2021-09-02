@@ -1,5 +1,5 @@
 group = 'com.9ls'
-version = '1.0.12'
+version = '1.0.13'
 
 project.ext {
     library_baseName = 'sus-api-common'
@@ -30,7 +30,7 @@ project.ext {
 apply from: "https://raw.githubusercontent.com/nine-lives/gradle-scripts/main/v6/library.gradle"
 
 dependencies {
-    implementation 'joda-time:joda-time:2.10.10'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.5'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-joda:2.12.5'
+    api 'joda-time:joda-time:2.10.10'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.12.5'
+    api 'com.fasterxml.jackson.datatype:jackson-datatype-joda:2.12.5'
 }

@@ -2,6 +2,7 @@ package uk.co.stuffusell.api.common;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.joda.time.LocalDate;
@@ -41,9 +42,6 @@ public final class CustomerDto {
     private String postcode;
     private String country;
     private String countryIso3;
-
-    private BalancesDto balances;
-
     private boolean paymentRequested;
     private BigDecimal minPartialPaymentAmount;
     private boolean canRequestPayment;
@@ -57,6 +55,7 @@ public final class CustomerDto {
     private LocalDate changeBacsDetailsDate;
     private boolean hasMarketPreference;
     private boolean doNotDisturb;
+    private BalancesDto balances;
 
     public String getCustomerUuid() {
         return customerUuid;
